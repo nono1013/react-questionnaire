@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Questionnaire from '../src/components/Questionnaire'
+import { Provider } from 'react-redux'
+import { store } from '../src/store'
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +14,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Questionnaire />
+        <Provider store={store}>
+          <Questionnaire />
+        </Provider>
       </main>
 
       <footer></footer>
