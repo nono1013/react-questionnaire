@@ -19,7 +19,10 @@ const Questionnaire: FC = () => {
   return (
     <div className="flex w-screen h-screen justify-center items-center p-4">
       {questions && questions.length > 0 && (
-        <Question question={questions[state.current].question}></Question>
+        <Question
+          num={state.current}
+          question={questions[state.current].question}
+        ></Question>
       )}
     </div>
   )
