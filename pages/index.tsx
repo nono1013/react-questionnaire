@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Questionnaire from '../src/components/Questionnaire'
 
 const Home: NextPage = () => {
   return (
@@ -10,8 +11,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full p-4 justify-center">
-        <h1 className="text-lg">Welcome!</h1>
+      <main>
+        <Questionnaire />
       </main>
 
       <footer></footer>
