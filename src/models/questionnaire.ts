@@ -1,11 +1,11 @@
 import { createModel } from '@rematch/core'
 import { RootModel } from '.'
 
-interface Question {
+export interface Question {
   question: string
 }
 
-interface Questionnaire {
+export interface Questionnaire {
   questions: Question[]
 }
 
@@ -21,17 +21,9 @@ export const questionnaire = createModel<RootModel>()({
   },
   effects: (dispatch) => ({
     async getQuestions() {
-      dispatch.questionnaire.setQuestions([
-        {
-          question: 'Is this a question?',
-        },
-        {
-          question: 'Is this also a question?',
-        },
-        {
-          question: 'Is this a question?',
-        },
-      ])
+      const response = await fetch('/api/questions')
+      const data = await response.json()
+      dispatch.questionnaire.setQuestions(data)
     },
   }),
 })
