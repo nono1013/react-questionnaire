@@ -6,7 +6,7 @@
 - [x] Next / prev
 - [x] Input type from data
 - [x] Progress
-- [ ] Complete button
+- [x] Complete button
 - [ ] Review form
 - [ ] Testing
 

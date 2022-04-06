@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.button-scheme-blue {
+  @apply bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+.button-scheme-green {
+  @apply bg-green-700 hover:bg-green-800 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800;
+}
+.button-scheme-yellow {
+  @apply bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-300 dark:focus:ring-yellow-900;
+}
+
 html,
 body {
   padding: 0;

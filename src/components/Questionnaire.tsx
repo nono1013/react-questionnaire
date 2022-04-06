@@ -2,7 +2,12 @@ import { FC, useState } from 'react'
 import { useSelector } from 'react-redux'
 import useQuestions from '../hooks/useQuestions'
 import { RootState } from '../store'
-import NextButton from './common/NextButton'
+import Button, {
+  CheckIcon,
+  EditIcon,
+  NextIcon,
+  PrevIcon,
+} from './common/Button'
 import Progress from './common/Progress'
 import Spinner from './common/Spinner'
 import Question from './Question'
@@ -52,12 +57,19 @@ const Questionnaire: FC = () => {
       )}
       <div className="fixed right-0 bottom-0 md:bottom-auto m-4">
         {state.current < questions.length - 1 && (
-          <NextButton onClick={nextQuestion}></NextButton>
+          <Button icon={NextIcon} onClick={nextQuestion}></Button>
+        )}
+        {state.current === questions.length - 1 && (
+          <Button
+            icon={CheckIcon}
+            onClick={() => {}}
+            colorScheme="green"
+          ></Button>
         )}
       </div>
       <div className="fixed left-0 bottom-0 md:bottom-auto m-4">
         {state.current > 0 && (
-          <NextButton onClick={prevQuestion} reversed={true}></NextButton>
+          <Button icon={PrevIcon} onClick={prevQuestion}></Button>
         )}
       </div>
       <div className="fixed bottom-0 m-4">
