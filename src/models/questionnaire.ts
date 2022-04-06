@@ -38,8 +38,12 @@ export const questionnaire = createModel<RootModel>()({
   effects: (dispatch) => ({
     async getQuestions() {
       const response = await fetch('/api/questions')
-      const data = await response.json()
-      dispatch.questionnaire.setQuestions(data)
+      if (response.ok) {
+        const data = await response.json()
+        dispatch.questionnaire.setQuestions(data)
+      } else {
+        throw new Error(response.statusText)
+      }
     },
   }),
 })
