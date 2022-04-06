@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import useQuestions from '../hooks/useQuestions'
 import { RootState } from '../store'
 import NextButton from './common/NextButton'
+import Progress from './common/Progress'
 import Spinner from './common/Spinner'
 import Question from './Question'
 
@@ -58,6 +59,12 @@ const Questionnaire: FC = () => {
         {state.current > 0 && (
           <NextButton onClick={prevQuestion} reversed={true}></NextButton>
         )}
+      </div>
+      <div className="fixed bottom-0 m-4">
+        <Progress
+          current={state.current + 1}
+          total={questions.length}
+        ></Progress>
       </div>
     </div>
   )

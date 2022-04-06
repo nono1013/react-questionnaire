@@ -5,7 +5,7 @@
 - [x] Submit answer (onUpdate)
 - [x] Next / prev
 - [x] Input type from data
-- [ ] Progress
+- [x] Progress
 - [ ] Complete button
 - [ ] Review form
 - [ ] Testing
