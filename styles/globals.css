@@ -9,7 +9,7 @@
   @apply bg-green-700 hover:bg-green-800 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800;
 }
 .button-scheme-yellow {
-  @apply bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-300 dark:focus:ring-yellow-900;
+  @apply bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-400 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800;
 }
 
 html,
