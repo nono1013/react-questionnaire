@@ -62,10 +62,16 @@ const Questionnaire: FC = () => {
     )
   }
 
-  return (
-    <div className="flex w-full h-screen justify-center items-center p-4 bg-gray-100 dark:bg-gray-900">
-      {loading && <Spinner></Spinner>}
+  if (loading) {
+    return (
+      <div className="flex w-screen h-screen justify-center items-center bg-gray-100 dark:bg-gray-900">
+        {loading && <Spinner></Spinner>}
+      </div>
+    )
+  }
 
+  return (
+    <div className="flex w-full h-full justify-center items-center px-4 bg-gray-100 dark:bg-gray-900">
       {questions && questions.length > 0 && !state.completed && (
         <Question
           num={state.current}
@@ -108,7 +114,7 @@ const Questionnaire: FC = () => {
         )}
       </div>
       <div className="fixed bottom-0 m-4">
-        {!state.completed && (
+        {!state.completed && !loading && (
           <Progress
             current={state.current + 1}
             total={questions.length}

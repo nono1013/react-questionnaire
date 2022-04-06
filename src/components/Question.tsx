@@ -12,7 +12,7 @@ const Question: FC<Props> = ({ num, question }) => {
   const { dispatch } = store
 
   return (
-    <div className="flex flex-col gap-4 justify-center">
+    <div className="flex flex-col h-screen gap-4 justify-center">
       <h2 className="text-2xl text-center text-black dark:text-white">
         {question.question}
       </h2>

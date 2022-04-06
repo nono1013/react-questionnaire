@@ -11,6 +11,10 @@ export default function handler(
       type: 'text',
     },
     {
+      question: 'Is this a question too?',
+      type: 'text',
+    },
+    {
       question: 'Is this also a question?',
       type: 'textarea',
     },
