@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 interface Props {
   id: string
@@ -6,14 +6,20 @@ interface Props {
 
   placeholder?: string
   values?: string[]
-  selected?: string
+  defaultValue?: string
 
-  onUpdate?: (value: string) => void
+  onUpdate: (value: string) => void
 }
 
 /// Tailwind implementation from https://flowbite.com/docs/components/forms/
 
-const TextInput: FC<Props> = ({ id, label, placeholder = ' ' }) => {
+const TextInput: FC<Props> = ({
+  id,
+  label,
+  placeholder = '',
+  defaultValue = '',
+  onUpdate,
+}) => {
   return (
     <div className="relative z-0 mb-6 w-full group">
       <input
@@ -23,6 +29,8 @@ const TextInput: FC<Props> = ({ id, label, placeholder = ' ' }) => {
         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
         placeholder={placeholder}
         required
+        defaultValue={defaultValue}
+        onChange={(e) => onUpdate(e.target.value)}
       />
       <label
         htmlFor={id}
@@ -34,7 +42,13 @@ const TextInput: FC<Props> = ({ id, label, placeholder = ' ' }) => {
   )
 }
 
-const TextareaInput: FC<Props> = ({ id, label, placeholder = '' }) => {
+const TextareaInput: FC<Props> = ({
+  id,
+  label,
+  placeholder = '',
+  defaultValue = '',
+  onUpdate,
+}) => {
   return (
     <>
       <label
@@ -49,12 +63,22 @@ const TextareaInput: FC<Props> = ({ id, label, placeholder = '' }) => {
         rows={4}
         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder={placeholder}
+        defaultValue={defaultValue}
+        onChange={(e) => onUpdate(e.target.value)}
       ></textarea>
     </>
   )
 }
 
-const RadioInput: FC<Props> = ({ id, label, values, selected }) => {
+const RadioInput: FC<Props> = ({
+  id,
+  label,
+  values,
+  defaultValue,
+  onUpdate,
+}) => {
+  const [selectedValue, setSelectedValue] = useState(defaultValue)
+
   return (
     <fieldset className="px-2 py-4">
       <legend className="sr-only">{label}</legend>
@@ -68,7 +92,11 @@ const RadioInput: FC<Props> = ({ id, label, values, selected }) => {
             className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
             aria-labelledby="country-option-1"
             aria-describedby="country-option-1"
-            checked={selected === value}
+            checked={selectedValue === value}
+            onChange={(e) => {
+              setSelectedValue(e.target.value)
+              onUpdate(e.target.value)
+            }}
           />
           <label
             htmlFor="country-option-1"

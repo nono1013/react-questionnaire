@@ -2,7 +2,7 @@
 
 ## Current
 
-- [ ] Submit answer (onUpdate)
+- [x] Submit answer (onUpdate)
 - [ ] Next / prev
 - [ ] Input type from data
 - [ ] Review form

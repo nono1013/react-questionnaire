@@ -21,7 +21,7 @@ const Questionnaire: FC = () => {
       {questions && questions.length > 0 && (
         <Question
           num={state.current}
-          question={questions[state.current].question}
+          question={questions[state.current]}
         ></Question>
       )}
     </div>
