@@ -1,9 +1,12 @@
 import { createModel } from '@rematch/core'
 import { RootModel } from '.'
 
+export type QuestionType = 'text' | 'textarea' | 'radio'
+
 export interface Question {
   question: string
   answer?: string
+  type: QuestionType
 }
 
 export interface Questionnaire {
@@ -26,7 +29,7 @@ export const questionnaire = createModel<RootModel>()({
       return {
         ...state,
         questions: state.questions.map((q, i) => ({
-          question: q.question,
+          ...q,
           answer: i === numOfQuestion ? payload : q.answer,
         })),
       }

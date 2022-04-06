@@ -8,12 +8,15 @@ export default function handler(
   res.status(200).json([
     {
       question: 'Is this a question?',
+      type: 'text',
     },
     {
       question: 'Is this also a question?',
+      type: 'textarea',
     },
     {
       question: 'Is this a question?',
+      type: 'radio',
     },
   ])
 }

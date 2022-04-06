@@ -4,6 +4,8 @@
 
 - [x] Submit answer (onUpdate)
 - [ ] Next / prev
-- [ ] Input type from data
+- [x] Input type from data
 - [ ] Review form
 - [ ] Testing
+- [ ] Styling Q/A
+- [ ] Custom values for radio

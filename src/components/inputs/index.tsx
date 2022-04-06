@@ -11,9 +11,11 @@ interface Props {
   onUpdate: (value: string) => void
 }
 
+type Input = FC<Props>
+
 /// Tailwind implementation from https://flowbite.com/docs/components/forms/
 
-const TextInput: FC<Props> = ({
+export const TextInput: Input = ({
   id,
   label,
   placeholder = '',
@@ -42,7 +44,7 @@ const TextInput: FC<Props> = ({
   )
 }
 
-const TextareaInput: FC<Props> = ({
+export const TextareaInput: Input = ({
   id,
   label,
   placeholder = '',
@@ -70,7 +72,7 @@ const TextareaInput: FC<Props> = ({
   )
 }
 
-const RadioInput: FC<Props> = ({
+export const RadioInput: Input = ({
   id,
   label,
   values,
@@ -109,5 +111,3 @@ const RadioInput: FC<Props> = ({
     </fieldset>
   )
 }
-
-export { TextInput, TextareaInput, RadioInput }
