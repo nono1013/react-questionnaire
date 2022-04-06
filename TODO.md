@@ -3,9 +3,15 @@
 ## Current
 
 - [x] Submit answer (onUpdate)
-- [ ] Next / prev
+- [x] Next / prev
 - [x] Input type from data
+- [ ] Progress
+- [ ] Complete button
 - [ ] Review form
 - [ ] Testing
-- [ ] Styling Q/A
+
+## Nice to have
+
 - [ ] Custom values for radio
+- [ ] Better styling for Q/A
+- [ ] Animation for next/prev
