@@ -1,55 +1,43 @@
 import { RematchDispatch } from '@rematch/core'
-import { Question, RootModel } from '../../models'
+import { QuestionType, RootModel } from '../../models'
 import { RadioInput, TextareaInput, TextInput } from '.'
 
 export const getInput = (
   numOfQuestion: number,
-  question: Question,
-  dispatch: RematchDispatch<RootModel>
+  questionType: QuestionType,
+  defaultValue: string | undefined,
+  onUpdate: (numOfQuestion: number, value: string) => {}
 ): JSX.Element => {
-  switch (question.type) {
+  switch (questionType) {
     case 'text':
       return (
         <TextInput
           id={`answer-${numOfQuestion}`}
+          key={`answer-${numOfQuestion}`}
           label="Answer"
-          defaultValue={question.answer}
-          onUpdate={(value) =>
-            dispatch.questionnaire.setAnswer({
-              numOfQuestion: numOfQuestion,
-              payload: value,
-            })
-          }
+          defaultValue={defaultValue}
+          onUpdate={(value) => onUpdate(numOfQuestion, value)}
         ></TextInput>
       )
     case 'textarea':
       return (
         <TextareaInput
           id={`answer-${numOfQuestion}`}
+          key={`answer-${numOfQuestion}`}
           label="Answer"
-          placeholder="Test"
-          defaultValue={question.answer}
-          onUpdate={(value) =>
-            dispatch.questionnaire.setAnswer({
-              numOfQuestion: numOfQuestion,
-              payload: value,
-            })
-          }
+          defaultValue={defaultValue}
+          onUpdate={(value) => onUpdate(numOfQuestion, value)}
         ></TextareaInput>
       )
     case 'radio':
       return (
         <RadioInput
           id={`answer-${numOfQuestion}`}
+          key={`answer-${numOfQuestion}`}
           label="Answer"
-          defaultValue={question.answer ?? 'One'}
+          defaultValue={defaultValue ?? 'One'}
           values={['One', 'Two', 'Three']}
-          onUpdate={(value) =>
-            dispatch.questionnaire.setAnswer({
-              numOfQuestion: numOfQuestion,
-              payload: value,
-            })
-          }
+          onUpdate={(value) => onUpdate(numOfQuestion, value)}
         ></RadioInput>
       )
     default:

@@ -8,11 +8,12 @@
 - [x] Progress
 - [x] Complete button
 - [x] Review form
+- [x] Readme
 - [ ] Testing
 
 ## Bugs
 
-- [ ] Clear same input type values on next/prev
+- [x] Clear same input type values on next/prev
 
 ## Nice to have
 
@@ -21,3 +22,7 @@
 - [ ] Better styling for Q/A and Summary
 - [ ] Animation for next/prev
 - [ ] Delay on text input onChange
+
+## Future improvements
+
+- [ ] Validation
