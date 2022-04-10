@@ -7,16 +7,23 @@ interface Props {
   onClick: () => void
   icon: Icon
   colorScheme?: 'blue' | 'green' | 'yellow'
+  testId?: string
 }
 
 export type Icon = JSX.Element
 
-const Button: FC<Props> = ({ onClick, icon, colorScheme = 'blue' }) => {
+const Button: FC<Props> = ({
+  onClick,
+  icon,
+  colorScheme = 'blue',
+  testId = null,
+}) => {
   const buttonColor = `button-scheme-${colorScheme}`
   return (
     <button
       type="button"
       onClick={onClick}
+      data-testid={testId}
       className={`${buttonColor} text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2`}
     >
       {icon}

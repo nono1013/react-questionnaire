@@ -29,11 +29,10 @@ describe('Questionnaire', () => {
     })
   )
 
-  beforeAll(() => server.listen())
-  afterEach(() => server.resetHandlers())
-  afterAll(() => server.close())
-
-  it('questionnaire should be rendered and can change input', async () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  beforeEach(() => {
     act(() => {
       render(
         <Provider store={store}>
@@ -41,19 +40,52 @@ describe('Questionnaire', () => {
         </Provider>
       )
     })
+  })
+  afterEach(() => server.resetHandlers())
+  afterAll(() => server.close())
 
-    expect(await screen.findByText('Question 1?')).toBeVisible()
-
-    const input = (await screen.findByDisplayValue(
-      'test 1'
-    )) as HTMLInputElement
+  const changeInput = async (testId: string, to: string) => {
+    const input = (await screen.findByTestId(testId)) as HTMLInputElement
     if (!input) fail('input not found')
+    fireEvent.input(input, { target: { value: to } })
+  }
 
-    expect(input.value).toBe('test 1')
-    fireEvent.input(input, { target: { value: 'test 2' } })
+  const clickButton = async (testId: string) => {
+    const btn = (await screen.findByTestId(testId)) as HTMLInputElement
+    if (!btn) fail('next button not found')
 
-    expect(input.value).toBe('test 2')
+    act(() => {
+      fireEvent.click(btn)
+    })
+  }
+
+  it('questionnaire should be rendered with first question', async () => {
+    expect(await screen.findByText('Question 1?')).toBeVisible()
+    expect(await screen.findByDisplayValue('test 1')).toBeVisible()
   })
 
-  // TODO: more test cases
+  it('can change input', async () => {
+    const q1answer = 'test 2'
+    await changeInput('text-input', q1answer)
+    expect(await screen.findByDisplayValue(q1answer)).toBeVisible()
+  })
+
+  it('can go to next question and summary, summary shows answers', async () => {
+    const q1answer = 'test 2'
+    const q2answer = 'test 3'
+
+    await changeInput('text-input', q1answer)
+
+    await clickButton('next-button')
+    expect(await screen.findByText('Question 2?')).toBeVisible()
+
+    await changeInput('textarea-input', q2answer)
+
+    await clickButton('complete-button')
+    expect(await screen.findByText('Summary')).toBeVisible()
+    expect(await screen.findByText(q1answer)).toBeVisible()
+    expect(await screen.findByText(q2answer)).toBeVisible()
+  })
+
+  // TODO: add more test cases (prev, back, no anwer, etc.), add helper fns and data
 })

@@ -84,13 +84,18 @@ const Questionnaire: FC = () => {
         {!state.completed && (
           <>
             {state.currentPage < questions.length - 1 && (
-              <Button icon={NextIcon} onClick={nextQuestion}></Button>
+              <Button
+                icon={NextIcon}
+                onClick={nextQuestion}
+                testId="next-button"
+              ></Button>
             )}
             {state.currentPage === questions.length - 1 && (
               <Button
                 icon={CheckIcon}
                 onClick={complete}
                 colorScheme="green"
+                testId="complete-button"
               ></Button>
             )}
           </>
@@ -103,12 +108,17 @@ const Questionnaire: FC = () => {
               icon={EditIcon}
               onClick={back}
               colorScheme="yellow"
+              testId="back-button"
             ></Button>
           </>
         ) : (
           <>
             {state.currentPage > 0 && (
-              <Button icon={PrevIcon} onClick={prevQuestion}></Button>
+              <Button
+                icon={PrevIcon}
+                onClick={prevQuestion}
+                testId="prev-button"
+              ></Button>
             )}
           </>
         )}
