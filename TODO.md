@@ -9,7 +9,7 @@
 - [x] Complete button
 - [x] Review form
 - [x] Readme
-- [ ] Testing
+- [x] Testing
 
 ## Bugs
 
