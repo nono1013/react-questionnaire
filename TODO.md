@@ -20,9 +20,10 @@
 - [ ] No answer indication
 - [ ] Custom values for radio / default
 - [ ] Better styling for Q/A and Summary
-- [ ] Animation for next/prev
 - [ ] Delay on text input onChange
 
 ## Future improvements
 
 - [ ] Validation
+- [ ] Better test coverage
+- [ ] Animation for next/prev

@@ -1,5 +1,3 @@
-/** @jest-environment jsdom */
-
 import { getInput } from './input-factory'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
